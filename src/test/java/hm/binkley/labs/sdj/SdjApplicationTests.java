@@ -1,4 +1,4 @@
-package xxx.sdj;
+package hm.binkley.labs.sdj;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

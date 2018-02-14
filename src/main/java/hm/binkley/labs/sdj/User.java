@@ -1,4 +1,4 @@
-package xxx.sdj;
+package hm.binkley.labs.sdj;
 
 import lombok.Data;
 
