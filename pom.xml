@@ -77,6 +77,7 @@
     </dependencies>
 
     <build>
+        <defaultGoal>clean verify</defaultGoal>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
