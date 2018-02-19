@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.transaction.Transactional;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
+@DataJpaTest(showSql = false)
 @Transactional
 public class UserRepositoryTest {
     @Autowired
