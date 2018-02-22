@@ -8,6 +8,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
 
+import static java.util.Collections.singletonList;
+import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -27,5 +29,17 @@ public class UserRepositoryTest {
         users.save(user);
 
         assertThat(users.findOne(user.getId()), is(user));
+    }
+
+    @Test
+    public void findByNickname() {
+        final User user = new User();
+        user.setFullName("Robert the Bruce");
+        user.setNickName("Bob");
+
+        users.save(user);
+
+        assertThat(users.findByNickName("Bob"), is(singletonList(user)));
+        assertThat(users.findByNickName("Fred"), is(empty()));
     }
 }
