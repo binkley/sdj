@@ -138,6 +138,11 @@
                     <execution>
                         <id>jacoco-report</id>
                         <phase>test</phase>
+                        <configuration>
+                            <excludes>
+                                <exclude>hm/binkley/labs/sdj/Application.class</exclude>
+                            </excludes>
+                        </configuration>
                         <goals>
                             <goal>report</goal>
                         </goals>
