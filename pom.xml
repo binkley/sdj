@@ -22,9 +22,11 @@
 
     <properties>
         <!-- @formatter:off -->
+        <jacoco.version>0.8.0</jacoco.version>
         <java.version>1.8</java.version>
         <jaxb.version>2.3.0</jaxb.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <minimum-coverage-ratio>0.33</minimum-coverage-ratio>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <surefire.printSummary>false</surefire.printSummary>
@@ -115,6 +117,56 @@
                     <target>${java.version}</target>
                     <parameters>true</parameters>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <id>jacoco-prepare-agent</id>
+                        <configuration>
+                            <excludes>
+                                <exclude>*Test</exclude>
+                            </excludes>
+                        </configuration>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-check</id>
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>CLASS</element>
+                                    <excludes>
+                                        <exclude>*Test</exclude>
+                                    </excludes>
+                                    <limits>
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>
+                                                ${minimum-coverage-ratio}
+                                            </minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                        </configuration>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
