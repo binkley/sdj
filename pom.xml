@@ -26,7 +26,7 @@
         <java.version>1.8</java.version>
         <jaxb.version>2.3.0</jaxb.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-        <minimum-coverage-ratio>0.33</minimum-coverage-ratio>
+        <minimum-coverage-ratio>1.00</minimum-coverage-ratio>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <surefire.printSummary>false</surefire.printSummary>
@@ -128,6 +128,7 @@
                         <configuration>
                             <excludes>
                                 <exclude>*Test</exclude>
+                                <exclude>hm.binkley.labs.sdj.Application</exclude>
                             </excludes>
                         </configuration>
                         <goals>
@@ -149,6 +150,7 @@
                                     <element>CLASS</element>
                                     <excludes>
                                         <exclude>*Test</exclude>
+                                        <exclude>hm.binkley.labs.sdj.Application</exclude>
                                     </excludes>
                                     <limits>
                                         <limit>
